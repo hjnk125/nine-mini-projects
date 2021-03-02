@@ -7,11 +7,9 @@ const Home: React.FC = () => {
 
     <div className="Home">
       <div className="contentBtn-container">
-        <div className="contentBtn">
-          <Link to="/countdown">Countdown</Link>
-        </div>
+        <Link to="/countdown" className="contentBtn">Countdown</Link>
         <div className="contentBtn">2</div>
-        <div className="contentBtn todo">3</div>
+        <div className="contentBtn">3</div>
         <div className="contentBtn">4</div>
         <div className="contentBtn">5</div>
         <div className="contentBtn">6</div>
