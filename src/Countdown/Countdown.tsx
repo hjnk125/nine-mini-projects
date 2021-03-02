@@ -9,23 +9,15 @@ const Countdown = ({ history }: RouteComponentProps) => {
   // console.log(today, userDate, currentDate);
   // console.log(new Date(userDate).getTime());
 
-  const newYear_timeGap = (new Date('2022-01-01').getTime() - currentDate) / 1000;
-  const newYear_days = Math.floor(newYear_timeGap / 3600 / 24);
-  const newYear_hours = Math.floor(newYear_timeGap / 3600) % 24;
-  const newYear_mins = Math.floor(newYear_timeGap / 60) % 60;
-  const newYear_secs = Math.floor(newYear_timeGap % 60);
+  function getTime(date: string) {
+    const timeGap = (new Date(date).getTime() - currentDate) / 1000;
+    const days = Math.floor(timeGap / 3600 / 24);
+    const hours = Math.floor(timeGap / 3600) % 24;
+    const mins = Math.floor(timeGap / 60) % 60;
+    const secs = Math.floor(timeGap % 60);
 
-  const xmas_timeGap = (new Date('2021-12-25').getTime() - currentDate) / 1000;
-  const xmas_days = Math.floor(xmas_timeGap / 3600 / 24);
-  const xmas_hours = Math.floor(xmas_timeGap / 3600) % 24;
-  const xmas_mins = Math.floor(xmas_timeGap / 60) % 60;
-  const xmas_secs = Math.floor(xmas_timeGap % 60);
-
-  const user_timeGap = (new Date(userDate).getTime() - currentDate) / 1000;
-  const user_days = Math.floor(user_timeGap / 3600 / 24);
-  const user_hours = Math.floor(user_timeGap / 3600) % 24;
-  const user_mins = Math.floor(user_timeGap / 60) % 60;
-  const user_secs = Math.floor(user_timeGap % 60);
+    return [days, hours, mins, secs];
+  }
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -61,22 +53,22 @@ const Countdown = ({ history }: RouteComponentProps) => {
         <h3>🎉 2022 🎊</h3>
         <div className="counter">
           <div className="counter-ele">
-            <p>{newYear_days}</p>
+            <p>{getTime('2022-01-01')[0]}</p>
             <span>days</span>
           </div>
           <div className="counter-ele">:</div>
           <div className="counter-ele">
-            <p>{newYear_hours}</p>
+            <p>{getTime('2022-01-01')[1]}</p>
             <span>hours</span>
           </div>
           <div className="counter-ele">:</div>
           <div className="counter-ele">
-            <p>{newYear_mins}</p>
+            <p>{getTime('2022-01-01')[2]}</p>
             <span>mins</span>
           </div>
           <div className="counter-ele">:</div>
           <div className="counter-ele">
-            <p>{newYear_secs}</p>
+            <p>{getTime('2022-01-01')[3]}</p>
             <span>secs</span>
           </div>
         </div>
@@ -85,22 +77,22 @@ const Countdown = ({ history }: RouteComponentProps) => {
         <h3>🎄 Christmas 🎅</h3>
         <div className="counter">
           <div className="counter-ele">
-            <p>{xmas_days}</p>
+            <p>{getTime('2021-12-25')[0]}</p>
             <span>days</span>
           </div>
           <div className="counter-ele">:</div>
           <div className="counter-ele">
-            <p>{xmas_hours}</p>
+            <p>{getTime('2021-12-25')[1]}</p>
             <span>hours</span>
           </div>
           <div className="counter-ele">:</div>
           <div className="counter-ele">
-            <p>{xmas_mins}</p>
+            <p>{getTime('2021-12-25')[2]}</p>
             <span>mins</span>
           </div>
           <div className="counter-ele">:</div>
           <div className="counter-ele">
-            <p>{xmas_secs}</p>
+            <p>{getTime('2021-12-25')[3]}</p>
             <span>secs</span>
           </div>
         </div>
@@ -112,22 +104,22 @@ const Countdown = ({ history }: RouteComponentProps) => {
           {(userDate === '') ? '' :
             <div className="counter">
               <div className="counter-ele">
-                <p>{user_days}</p>
+                <p>{getTime(userDate)[0]}</p>
                 <span>days</span>
               </div>
               <div className="counter-ele">:</div>
               <div className="counter-ele">
-                <p>{user_hours}</p>
+                <p>{getTime(userDate)[1]}</p>
                 <span>hours</span>
               </div>
               <div className="counter-ele">:</div>
               <div className="counter-ele">
-                <p>{user_mins}</p>
+                <p>{getTime(userDate)[2]}</p>
                 <span>mins</span>
               </div>
               <div className="counter-ele">:</div>
               <div className="counter-ele">
-                <p>{user_secs}</p>
+                <p>{getTime(userDate)[3]}</p>
                 <span>secs</span>
               </div>
             </div>
