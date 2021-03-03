@@ -4,6 +4,8 @@ import './Countdown.scss';
 
 const Countdown = ({ history }: RouteComponentProps) => {
 
+  const [fullPage, setFullPage] = useState<boolean>(false);
+
   const [userDate, setUserDate] = useState<string>('');
   const [currentDate, setCurrentDate] = useState<number>(Date.now);
   // console.log(today, userDate, currentDate);
@@ -30,7 +32,7 @@ const Countdown = ({ history }: RouteComponentProps) => {
 
   return (
     <div className="background">
-      <div className="countdown-container">
+      <div className={(fullPage) ? "countdown-container-full" : "countdown-container"}>
 
         <div className="titlebar">
           <div className="buttons">
@@ -40,10 +42,14 @@ const Countdown = ({ history }: RouteComponentProps) => {
               }}><span>x</span></a>
             </div>
             <div className="minimize">
-              <a className="minimizebutton" href="#"><span>&ndash;</span></a>
+              <a className="minimizebutton" href="#" onClick={() =>
+                setFullPage(false)
+              }><span>&ndash;</span></a>
             </div>
             <div className="zoom">
-              <a className="zoombutton" href="#"><span>+</span></a>
+              <a className="zoombutton" href="#" onClick={() =>
+                setFullPage(true)
+              }><span>+</span></a>
             </div>
           </div>
           <span className="titlebar-title">CountDown!</span>

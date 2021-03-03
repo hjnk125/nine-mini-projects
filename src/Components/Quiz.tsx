@@ -48,29 +48,64 @@ const questionBox = [
 const Quiz = ({ history }: RouteComponentProps) => {
 
   const [questionNum, setQuestionNum] = useState<number>(0)
+  const [fullPage, setFullPage] = useState<boolean>(false);
 
   return (
     <div className="background">
-      Quiz about me!
-      <div>{questionNum + 1} / 5</div>
+      <div className={(fullPage) ? "quiz-container-full" : "quiz-container"}>
 
-      <ul>
-        <li>{questionBox[questionNum].question}</li>
-        {/* make radio button */}
-        <li>{questionBox[questionNum].a}</li>
-        <li>{questionBox[questionNum].b}</li>
-        <li>{questionBox[questionNum].c}</li>
-        <li>{questionBox[questionNum].d}</li>
-      </ul>
+        <div className="titlebar">
+          <div className="buttons">
+            <div className="close">
+              <a className="closebutton" href="#" onClick={() => {
+                history.push('/');
+              }}><span>x</span></a>
+            </div>
+            <div className="minimize">
+              <a className="minimizebutton" href="#" onClick={() =>
+                setFullPage(false)
+              }><span>&ndash;</span></a>
+            </div>
+            <div className="zoom">
+              <a className="zoombutton" href="#" onClick={() =>
+                setFullPage(true)
+              }><span>+</span></a>
+            </div>
+          </div>
+          <span className="titlebar-title">Quiz about me!</span>
+        </div>
 
-      <button onClick={() => {
-        if (questionNum < 4) {
-          setQuestionNum(questionNum + 1)
-        } else {
-          alert('last question')
-        }
-      }}>next</button>
 
+
+        <h3>{questionBox[questionNum].question}</h3>
+        <div className="question-box">
+          <div>
+            <input type="radio" id="a" name="answer" value="a" />
+            <label htmlFor="a">{questionBox[questionNum].a}</label>
+          </div>
+          <div>
+            <input type="radio" id="b" name="answer" value="b" />
+            <label htmlFor="b">{questionBox[questionNum].b}</label>
+          </div>
+          <div>
+            <input type="radio" id="c" name="answer" value="c" />
+            <label htmlFor="c">{questionBox[questionNum].c}</label>
+          </div>
+          <div>
+            <input type="radio" id="d" name="answer" value="d" />
+            <label htmlFor="d">{questionBox[questionNum].d}</label>
+          </div>
+        </div>
+
+        <div>{questionNum + 1} / 5</div>
+        <button onClick={() => {
+          if (questionNum < 4) {
+            setQuestionNum(questionNum + 1);
+          } else {
+            alert('last question');
+          }
+        }}>next</button>
+      </div>
     </div>
   )
 };

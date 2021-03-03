@@ -34,7 +34,10 @@
   cursor: pointer;
   text-decoration: none;
   color: #121212;
-  
+  &:hover {
+    background-color: #f1f5f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .contentBtn-number {
