@@ -37,17 +37,17 @@ const Countdown = ({ history }: RouteComponentProps) => {
         <div className="titlebar">
           <div className="buttons">
             <div className="close">
-              <a className="closebutton" href="#" onClick={() => {
+              <a className="closebutton" href="#!" onClick={() => {
                 history.push('/');
               }}><span>x</span></a>
             </div>
             <div className="minimize">
-              <a className="minimizebutton" href="#" onClick={() =>
+              <a className="minimizebutton" href="#!" onClick={() =>
                 setFullPage(false)
               }><span>&ndash;</span></a>
             </div>
             <div className="zoom">
-              <a className="zoombutton" href="#" onClick={() =>
+              <a className="zoombutton" href="#!" onClick={() =>
                 setFullPage(true)
               }><span>+</span></a>
             </div>
